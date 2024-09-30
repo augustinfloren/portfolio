@@ -636,8 +636,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 50px;
 }
 
-.ml-\[20\%\] {
-  margin-left: 20%;
+.mt-12 {
+  margin-top: 3rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .mt-5 {
@@ -646,18 +650,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .mt-mobile-section {
   margin-top: 52px;
-}
-
-.mt-24 {
-  margin-top: 6rem;
-}
-
-.mt-12 {
-  margin-top: 3rem;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
 }
 
 .flex {
@@ -672,12 +664,12 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-.h-\[20rem\] {
-  height: 20rem;
-}
-
 .h-\[2rem\] {
   height: 2rem;
+}
+
+.h-\[30rem\] {
+  height: 30rem;
 }
 
 .h-\[auto\] {
@@ -690,14 +682,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .h-full {
   height: 100%;
-}
-
-.h-\[25rem\] {
-  height: 25rem;
-}
-
-.h-\[30rem\] {
-  height: 30rem;
 }
 
 .w-7 {
@@ -814,6 +798,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .gap-\[15px\] {
   gap: 15px;
+}
+
+.gap-24 {
+  gap: 6rem;
+}
+
+.self-center {
+  align-self: center;
 }
 
 .rounded-full {
@@ -961,6 +953,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .leading-title {
   line-height: 48px;
+}
+
+.leading-\[120\%\] {
+  line-height: 120%;
+}
+
+.leading-\[142\%\] {
+  line-height: 142%;
 }
 
 .text-accent-light {

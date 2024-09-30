@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
     <title>Augustin Floren</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
     <!-- CONTAINER -->
@@ -31,7 +32,7 @@
                 </div>
                 <div class="flex flex-col items-start mb-[40px] gap-[15px] col-span-12 lg:col-span-6 md:col-span-7">
                     <h1 class="text-xl font-bold leading-none bg-clip-text text-transparent bg-gradient-to-r from-accent-light to-accent-dark">Hello !</h1>
-                    <h4 class="text-large font-light leading-title max-w-[550px]">
+                    <h4 class="text-large font-light leading-[142%] max-w-[550px]">
                         I enjoy spending time in front of a screen
                         or with a pencil, imagining, have fun, and
                         discovering new tools.
@@ -46,38 +47,41 @@
             <section id="Work" class="mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8"> 
             <h3 class="text-medium font-light mb-title">Selected Work</h3>
                 <!-- Cards -->
-                <div class="cards-container grid grid-rows-4 gap-48 md:gap-24">
-                    <!-- Card -->
-                    <div class="flex flex-col items-center h-[30rem] sm:h-[20rem] sm:flex-row text-primary p-card bg-gradient-to-r from-accent-dark to-accent-light rounded-lg relative">
-                        <!-- Card > Description -->
-                        <div class="h-full grow basis-1/2 flex flex-col items-start justify-between gap-5">
-                            <div class="flex flex-col">
-                                <span class="text-sm opacity-50 leading-none">2024</span>
-                                <div class="flex gap-4">
-                                    <h4 class="text-primary text-base">Les artistes femmes</h4>
-                                    <a href="http://194.164.60.106/" target="_blank">
-                                        <div class="border w-[2rem] h-[2rem] flex justify-center items-center rounded-full border-accent-light text-accent-light leading-none pb-[2px] pr-[2px] cursor-pointer">↗</div>
-                                    </a>
+                <div class="cards-container grid grid-rows-4 gap-24" x-data="app()">
+                    <template x-for="card in cards" :key="card.id">
+                        <!-- Card -->
+                        <div class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row text-primary p-card bg-gradient-to-r from-accent-dark to-accent-light rounded-lg relative" x-data="cardComponent(card)">
+                            <!-- Card > Description -->
+                            <div class="h-full grow basis-1/2 flex flex-col items-start justify-between gap-5">
+                                <div class="flex flex-col">
+                                    <span class="text-sm opacity-50 leading-none" x-text="date"></span>
+                                    <div class="flex gap-4 items-center">
+                                        <h4 class="text-primary text-base" x-text="title"></h4>
+                                        <a x-bind:href="link" target="_blank">
+                                            <div class="border w-[2rem] h-[2rem] flex justify-center items-center rounded-full border-accent-light text-accent-light leading-none pb-[2px] pr-[2px] cursor-pointer">↗</div>
+                                        </a>
+                                    </div>
+                                    <p class="text-sm mt-2 sm:mt-5" x-text="description">
+                                    </p>
                                 </div>
-                                <p class="text-sm mt-2 sm:mt-5">
-                                    Borro berum cus maximpore venis qui utempor emporempe magniet molupta quodio. Itatenimus dunt laudae que pa voloribus rerupta tempers picillatem qui 
-                                </p>
-                            </div>
-                            <div class="flex gap-3 text-sm items-center">
-                                <div class="badge p-badge px-[10px] rounded-full">Design</div>
-                                <div class="badge p-badge px-[10px] rounded-full">Dev.</div>
-                                <div class="badge p-badge px-[10px] rounded-full">OPS</div>
-                                <span>|</span>
-                                <div class="w-7">
-                                    <img src="./assets/img/react.png" alt="Logo de React." class="">
+                                <div class="flex gap-3 text-sm items-center">
+                                    <template x-for="badge in badges">
+                                        <div class="badge p-badge px-[10px] rounded-full" x-text="badge"></div>
+                                    </template>
+                                    <span>|</span>
+                                    <template x-for="logo in logos">
+                                        <div class="w-7">
+                                            <img :src="logo.url" class=""/>
+                                        </div>
+                                    </template>
+                                </div>
+                                </div>
+                                <!-- Card > Image -->
+                                <div class="grow basis-1/2 flex justify-center items-center w-[35%] self-center">
+                                    <video src="./assets/video/osplaf.webm" autoplay="" loop="" class="w-[55%] mt-12 sm:mt-0 sm:ml-[20%] absolute max-w-[650px] min-w-[350px] drop-shadow-lg"></video>
                                 </div>
                             </div>
-                            </div>
-                            <!-- Card > Image -->
-                            <div class="grow basis-1/2 flex justify-center items-center w-[35%]">
-                                <video src="./assets/video/osplaf.webm" autoplay="" loop="" class="w-[55%] mt-12 sm:mt-0 sm:ml-[20%] absolute max-w-[650px] min-w-[350px] drop-shadow-lg"></video>
-                            </div>
-                        </div>
+                    </template>
                 </div>
             </section>
         </main>
@@ -85,6 +89,56 @@
         <footer>
             footer
         </footer>
+        <script>
+            function app() {
+                return {
+                    cards: [
+                        { id: 1, 
+                            title: 'Les artistes femmes', 
+                            date: '2024', 
+                            description: 'Borro berum cus maximpore venis qui utempor emporempe magniet molupta quodio. Itatenimus dunt laudae que pa voloribus rerupta tempers picillatem qui', 
+                            link: 'http://194.164.60.106/',
+                            badges: [ 
+                                'Design', 
+                                'React', 
+                                'OPS'
+                            ],
+                            image: './assets/video/osplaf.webm', 
+                            logos: [
+                               {title : 'react', url: './assets/img/react.png'},
+                            ]
+                        },
+                        { id: 2, 
+                            title: 'Les artistes femmes', 
+                            date: '2024', 
+                            description: 'Borro berum cus maximpore venis qui utempor emporempe magniet molupta quodio. Itatenimus dunt laudae que pa voloribus rerupta tempers picillatem qui', 
+                            link: 'http://194.164.60.106/',
+                            badges: [ 
+                                'Design', 
+                                'React', 
+                                'OPS'
+                            ],
+                            image: './assets/video/osplaf.webm', 
+                            logos: [
+                               {title : 'react', url: './assets/img/react.png'},
+                            ]
+                        },
+                    ],
+                };
+            }
+        
+            function cardComponent(card) {
+                return {
+                    title: card.title,
+                    description: card.description,
+                    date: card.date,
+                    link: card.link,
+                    badges: card.badges,
+                    image: card.image,
+                    logos: card.logos,
+                };
+            }
+        </script>
     </div>
 </body>
 </html>
