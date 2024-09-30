@@ -39,7 +39,7 @@
                     </h4>
                     <!-- Bouton -->
                     <div class="text-base font-light rounded-lg border border-gray-300 p-btn px-5 mt-5">
-                        See my work
+                        See projects
                     </div>
                 </div>
             </section>
@@ -50,25 +50,31 @@
                 <div class="cards-container grid grid-rows-4 gap-24" x-data="app()">
                     <template x-for="card in cards" :key="card.id">
                         <!-- Card -->
-                        <div class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row text-primary p-card bg-gradient-to-r from-accent-dark to-accent-light rounded-lg relative" x-data="cardComponent(card)">
+                        <div :class="card.id % 2 === 0 ? 'text-text bg-primary' : 'text-primary bg-gradient-to-r from-accent-dark to-accent-light'" class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row p-card rounded-lg relative" x-data="cardComponent(card)">
                             <!-- Card > Description -->
-                            <div class="h-full grow basis-1/2 flex flex-col items-start justify-between gap-5">
+                            <div :class="card.id % 2 === 0 ? 'sm:order-2' : 'sm:order-1'" class="order-1 h-full grow basis-1/2 flex flex-col items-start justify-between gap-5">
                                 <div class="flex flex-col">
-                                    <span class="text-sm opacity-50 leading-none" x-text="date"></span>
+                                    <!-- date -->
+                                    <span class="text-xs opacity-50 leading-none" x-text="date"></span>
                                     <div class="flex gap-4 items-center">
-                                        <h4 class="text-primary text-base" x-text="title"></h4>
+                                        <!-- title -->
+                                        <h4 :class="card.id % 2 === 0 ? 'text-text' : 'text-primary'" class="text-base" x-text="title"></h4>
+                                        <!-- link -->
                                         <a x-bind:href="link" target="_blank">
                                             <div class="border w-[2rem] h-[2rem] flex justify-center items-center rounded-full border-accent-light text-accent-light leading-none pb-[2px] pr-[2px] cursor-pointer">↗</div>
                                         </a>
                                     </div>
+                                    <!-- desctription text -->
                                     <p class="text-sm mt-2 sm:mt-5" x-text="description">
                                     </p>
                                 </div>
-                                <div class="flex gap-3 text-sm items-center">
+                                <div class="flex gap-2 items-center">
+                                    <!-- Badges -->
                                     <template x-for="badge in badges">
-                                        <div class="badge p-badge px-[10px] rounded-full" x-text="badge"></div>
+                                        <span class="rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-text ring-1 ring-inset ring-gray-500/10" x-text="badge"></span>
                                     </template>
                                     <span>|</span>
+                                    <!-- logos -->
                                     <template x-for="logo in logos">
                                         <div class="w-7">
                                             <img :src="logo.url" class=""/>
@@ -76,9 +82,9 @@
                                     </template>
                                 </div>
                                 </div>
-                                <!-- Card > Image -->
-                                <div class="grow basis-1/2 flex justify-center items-center w-[35%] self-center">
-                                    <video src="./assets/video/osplaf.webm" autoplay="" loop="" class="w-[55%] mt-12 sm:mt-0 sm:ml-[20%] absolute max-w-[650px] min-w-[350px] drop-shadow-lg"></video>
+                                <!-- Card > Mockup -->
+                                <div :class="card.id % 2 === 0 ? 'sm:order-1' : 'sm:order-2'" class="order-2 grow basis-1/2 flex justify-center items-center w-[35%] self-center">
+                                    <video :id="'mockup-' + card.id" :src="mockup" muted autoplay loop playsinline :class="card.id % 2 === 0 ? 'sm:ml-[-20%]' : 'sm:ml-[20%]'" class="w-[55%] mt-12 sm:mt-0 absolute max-w-[650px] min-w-[350px] drop-shadow-lg"></video>
                                 </div>
                             </div>
                     </template>
@@ -93,7 +99,8 @@
             function app() {
                 return {
                     cards: [
-                        { id: 1, 
+                        { 
+                            id: 1, 
                             title: 'Les artistes femmes', 
                             date: '2024', 
                             description: 'Borro berum cus maximpore venis qui utempor emporempe magniet molupta quodio. Itatenimus dunt laudae que pa voloribus rerupta tempers picillatem qui', 
@@ -103,22 +110,23 @@
                                 'React', 
                                 'OPS'
                             ],
-                            image: './assets/video/osplaf.webm', 
+                            mockup: './assets/video/osplaf.webm', 
                             logos: [
                                {title : 'react', url: './assets/img/react.png'},
                             ]
                         },
-                        { id: 2, 
-                            title: 'Les artistes femmes', 
+                        { 
+                            id: 2, 
+                            title: 'Piedebiche', 
                             date: '2024', 
                             description: 'Borro berum cus maximpore venis qui utempor emporempe magniet molupta quodio. Itatenimus dunt laudae que pa voloribus rerupta tempers picillatem qui', 
-                            link: 'http://194.164.60.106/',
+                            link: 'http://piedebiche.fr/',
                             badges: [ 
                                 'Design', 
-                                'React', 
+                                'Custom WP theme', 
                                 'OPS'
                             ],
-                            image: './assets/video/osplaf.webm', 
+                            mockup: './assets/video/pdb.webm', 
                             logos: [
                                {title : 'react', url: './assets/img/react.png'},
                             ]
@@ -134,11 +142,12 @@
                     date: card.date,
                     link: card.link,
                     badges: card.badges,
-                    image: card.image,
+                    mockup: card.mockup,
                     logos: card.logos,
                 };
             }
         </script>
+        <script src="./script.js"></script>
     </div>
 </body>
 </html>

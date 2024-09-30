@@ -11,8 +11,8 @@
         @apply text-text font-display;
     }
 
-    .badge {
+    /* .badge {
         @apply bg-primary text-accent-dark uppercase;
-    }
+    } */
 };
   

@@ -28,6 +28,7 @@ module.exports = {
         'mobile-btn': '9px',
       },
       fontSize: {
+        badge: '0.3rem',
         sm: 'clamp(0.9rem, 0.971rem + -0.19vw, 0.8rem)',
         base: 'clamp(1rem, 0.821rem + 0.476vw, 1.25rem)',
         medium: 'clamp(1.44rem, 1.352rem + 0.234vw, 1.563rem)',
