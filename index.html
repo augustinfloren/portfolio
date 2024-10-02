@@ -43,15 +43,15 @@
                 </div>
             </section>
             <!-- WORK SECTION -->
-            <section id="Work" class="mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6"> 
-            <h3 class="text-medium font-light mb-title">Créations récentes</h3>
+            <section id="Work" class="mb-[30px] mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6"> 
+                <h3 class="text-medium font-light mb-title">Créations récentes</h3>
                 <!-- Cards -->
-                <div class="cards-container grid grid-rows-6 gap-14" x-data="app()">
+                <div class="cards-container grid grid-rows-4 gap-14" x-data="app()">
                     <template x-for="card in cards" :key="card.id">
                         <!-- Card -->
-                        <div :class="card.id % 2 === 0 ? 'text-text bg-primary' : 'text-primary bg-gradient-to-r from-accent-dark to-accent-light'" class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row p-card rounded-lg relative drop-shadow-2xl" x-data="cardComponent(card)">
+                        <div :class="card.id % 2 === 0 ? 'text-text bg-primary' : 'text-primary bg-gradient-to-r from-accent-dark to-accent-light'" class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row p-5 sm:p-card rounded-lg relative drop-shadow-2xl" x-data="cardComponent(card)">
                             <!-- Card > Description -->
-                            <div :class="card.id % 2 === 0 ? 'sm:order-2' : 'sm:order-1'" class="order-1 h-full grow basis-1/2 flex flex-col items-start justify-between gap-5">
+                            <div :class="card.id % 2 === 0 ? 'sm:order-2' : 'sm:order-1'" class="order-1 h-full grow basis-1/2 flex flex-col items-start justify-start sm:justify-between gap-5">
                                 <div class="flex flex-col">
                                     <!-- date -->
                                     <span class="text-xs opacity-50 leading-none" x-text="date"></span>
@@ -67,7 +67,7 @@
                                     <p class="text-sm mt-2 sm:mt-5" x-text="description">
                                     </p>
                                 </div>
-                                <div class="flex gap-2 items-center">
+                                <div class="flex gap-2 items-center mt-5 sm:mt-0">
                                     <!-- Badges -->
                                     <template x-for="badge in badges">
                                         <span class="rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-text ring-1 ring-inset ring-gray-500/10" x-text="badge"></span>
@@ -75,7 +75,7 @@
                                     <span>|</span>
                                     <!-- logos -->
                                     <template x-for="logo in logos">
-                                        <div class="w-7">
+                                        <div :class="logo.large ? 'w-14' : (logo.medium ? 'w-[32px]' : 'w-7')">
                                             <img :src="card.id % 2 === 0 ? logo.dark : logo.light" class=""/>
                                         </div>
                                     </template>
@@ -87,6 +87,97 @@
                                 </div>
                             </div>
                     </template>
+                </div>
+            </section>
+            <!-- ABOUT SECTION -->
+            <section id="Work" class="mb-[30px] mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6"> 
+                <h3 class="text-medium font-light mb-title">À propos de moi</h3>
+                <!-- Card -->
+                <div class="text-text bg-primary flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-2xl">
+                    <!-- Card > Description -->
+                    <div class="h-full grow basis-1/2 flex flex-col items-start justify-between gap-5">
+                        <!-- description text -->
+                        <p class="text-sm">
+                            Net odipicae nimo ius, sandae. Itae il incipideri te et quae consequatem que el et ab inctore prempeliquis quatustius exceaqui omnis del ilis ducit, ut que nihil imi, sum eum harcidi cturiatusam eatenes sintion resto id quam, cuptati stionest, quaecus ea doluptat. Tem fuga. Nemqui 
+                        </p>
+                    </div>
+                    <!-- Card > Image -->
+                    <div class="grow basis-1/2 flex justify-center h-full w-full items-center self-center bg-no-repeat bg-center bg-cover bg-[length:150%] rounded-md" style="background-image: url(./assets/img/landscape.jpg)"></div>
+                </div>
+            </section>
+            <!-- SKILLS SECTION -->
+            <section id="Work" class="mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6"> 
+                <h3 class="text-medium font-light mb-title">Skills</h3>
+                <!-- Cards -->
+                <div>
+                
+                </div>
+                <!-- Cards container -->
+                <div class="flex gap-[1.5vw]">
+                    <!-- Card 1 -->   
+                    <div class="grow basis-1/2">
+                        <!-- card > title -->
+                        <h4 class="text-base mt-[-10px] mb-[15px]">→ Development</h4>
+                        <div class="md:col-span-5 text-text bg-primary flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-lg">
+                            <!-- Card > List -->
+                            <div class="flex gap-5 w-full">
+                                <div class="flex flex-col gap-3 grow basis-1/2">
+                                    <h4 class="text-[1rem]">Knowledges</h4>
+                                    <ul class="text-sm leading-7">
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col gap-3 grow basis-1/2">
+                                    <h4 class="text-[1rem]">Tools</h4>
+                                    <ul class="text-sm leading-7">
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->   
+                    <div class="grow basis-1/2">
+                        <!-- card > title -->
+                        <h4 class="text-base mt-[-10px] mb-[15px]">→ Development</h4>
+                        <div class="md:col-span-5 text-text bg-primary flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-lg">
+                            <!-- Card > List -->
+                            <div class="flex gap-5 w-full">
+                                <div class="flex flex-col gap-3 grow basis-1/2">
+                                    <h4 class="text-[1rem]">Knowledges</h4>
+                                    <ul class="text-sm leading-7">
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col gap-3 grow basis-1/2">
+                                    <h4 class="text-[1rem]">Tools</h4>
+                                    <ul class="text-sm leading-7">
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                        <li>▪ Knowledges</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -145,7 +236,7 @@
                             ],
                             mockup: './assets/video/drinkgenius.webm', 
                             logos: [
-                                {title : 'wp', dark: './assets/img/wp-dark.svg', light: './assets/img/wp-light.svg'},
+                                {title : 'node', dark: './assets/img/node-dark.svg', light: './assets/img/node-light.svg', large: true},
                             ]
                         },
                         { 
@@ -153,7 +244,7 @@
                             title: 'Young Creative Awards', 
                             date: '2021', 
                             description: 'Conception de l\'identité visuelle numérique de la section Young Creative Awards du festival Deauville Green Awards.', 
-                            link: 'https://drink-genius.fr/',
+                            link: 'https://deauvillegreenawards.com/fr/competition/young-creative-awards',
                             badges: [ 
                                 'Design', 
                                 'Identité visuelle'
@@ -161,7 +252,7 @@
                             mockup: './assets/video/yca.webm', 
                             logos: [
                                 {title : 'figma', dark: './assets/img/figma-dark.svg', light: './assets/img/figma-light.svg'},
-                                {title : 'adobe', dark: './assets/img/adobe-dark.svg', light: './assets/img/adobe-light.svg'},
+                                {title : 'adobe', dark: './assets/img/adobe-dark.svg', light: './assets/img/adobe-light.svg', medium: true},
                             ]
                         },
                     ],
