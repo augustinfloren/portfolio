@@ -18,8 +18,8 @@
             </div>
             <!-- Menu -->
             <nav class="hidden md:flex text-base bg-secondary h-auto py-2 px-6 gap-6 rounded-full">
-                <a href="#">Work</a>
-                <a href="#">About</a>
+                <a href="#">Projets</a>
+                <a href="#">À propos</a>
                 <a href="#">Contact</a>
             </nav>
         </header>
@@ -33,24 +33,23 @@
                 <div class="flex flex-col items-start mb-[40px] gap-[15px] col-span-12 lg:col-span-6 md:col-span-7">
                     <h1 class="text-xl font-bold leading-none bg-clip-text text-transparent bg-gradient-to-r from-accent-light to-accent-dark">Hello !</h1>
                     <h4 class="text-large font-light leading-[142%] max-w-[550px]">
-                        I enjoy spending time in front of a screen
-                        or with a pencil, imagining, have fun, and
-                        discovering new tools.
+                        J’aime passer du temps derrière un écran ou avec un crayon, à imaginer,
+                        trouver des solutions, soigner mon travail et découvrir de nouveaux outils.
                     </h4>
                     <!-- Bouton -->
                     <div class="text-base font-light rounded-lg border border-gray-300 p-btn px-5 mt-5">
-                        See projects
+                        Voir mon travail
                     </div>
                 </div>
             </section>
             <!-- WORK SECTION -->
-            <section id="Work" class="mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8"> 
-            <h3 class="text-medium font-light mb-title">Selected Work</h3>
+            <section id="Work" class="mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6"> 
+            <h3 class="text-medium font-light mb-title">Créations récentes</h3>
                 <!-- Cards -->
-                <div class="cards-container grid grid-rows-4 gap-24" x-data="app()">
+                <div class="cards-container grid grid-rows-6 gap-14" x-data="app()">
                     <template x-for="card in cards" :key="card.id">
                         <!-- Card -->
-                        <div :class="card.id % 2 === 0 ? 'text-text bg-primary' : 'text-primary bg-gradient-to-r from-accent-dark to-accent-light'" class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row p-card rounded-lg relative" x-data="cardComponent(card)">
+                        <div :class="card.id % 2 === 0 ? 'text-text bg-primary' : 'text-primary bg-gradient-to-r from-accent-dark to-accent-light'" class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row p-card rounded-lg relative drop-shadow-2xl" x-data="cardComponent(card)">
                             <!-- Card > Description -->
                             <div :class="card.id % 2 === 0 ? 'sm:order-2' : 'sm:order-1'" class="order-1 h-full grow basis-1/2 flex flex-col items-start justify-between gap-5">
                                 <div class="flex flex-col">
@@ -77,14 +76,14 @@
                                     <!-- logos -->
                                     <template x-for="logo in logos">
                                         <div class="w-7">
-                                            <img :src="logo.url" class=""/>
+                                            <img :src="card.id % 2 === 0 ? logo.dark : logo.light" class=""/>
                                         </div>
                                     </template>
                                 </div>
                                 </div>
                                 <!-- Card > Mockup -->
                                 <div :class="card.id % 2 === 0 ? 'sm:order-1' : 'sm:order-2'" class="order-2 grow basis-1/2 flex justify-center items-center w-[35%] self-center">
-                                    <video :id="'mockup-' + card.id" :src="mockup" muted autoplay loop playsinline :class="card.id % 2 === 0 ? 'sm:ml-[-20%]' : 'sm:ml-[20%]'" class="w-[55%] mt-12 sm:mt-0 absolute max-w-[650px] min-w-[350px] drop-shadow-lg"></video>
+                                    <video :id="'mockup-' + card.id" :src="mockup" muted autoplay loop playsinline :class="(card.id % 2 === 0 ? 'sm:ml-[-20%]' : 'sm:ml-[20%]') + ' ' + (card.id === 4 ? 'w-[45%] mr-[40px] sm:mr-0' : 'w-[55%]')" class="mt-12 sm:mt-0 absolute max-w-[650px] min-w-[350px]"></video>
                                 </div>
                             </div>
                     </template>
@@ -103,32 +102,66 @@
                             id: 1, 
                             title: 'Les artistes femmes', 
                             date: '2024', 
-                            description: 'Borro berum cus maximpore venis qui utempor emporempe magniet molupta quodio. Itatenimus dunt laudae que pa voloribus rerupta tempers picillatem qui', 
+                            description: 'Réalisation du site internet d\'achat du jeux de société imaginé par l\'artiste plasticienne Sybille Duboc + création graphique du design de la boîte de jeux.', 
                             link: 'http://194.164.60.106/',
                             badges: [ 
                                 'Design', 
-                                'React', 
+                                'Dev', 
                                 'OPS'
                             ],
                             mockup: './assets/video/osplaf.webm', 
                             logos: [
-                               {title : 'react', url: './assets/img/react.png'},
+                               {title : 'react', dark: './assets/img/react-dark.svg', light: './assets/img/react-light.svg'},
+                               {title : 'sass', dark: './assets/img/sass-dark.svg', light: './assets/img/sass-light.svg'},
                             ]
                         },
                         { 
                             id: 2, 
                             title: 'Piedebiche', 
                             date: '2024', 
-                            description: 'Borro berum cus maximpore venis qui utempor emporempe magniet molupta quodio. Itatenimus dunt laudae que pa voloribus rerupta tempers picillatem qui', 
-                            link: 'http://piedebiche.fr/',
+                            description: 'Site internet du groupe de Punk-rock marseillais avec créations d\'un plugin de lecteur audio ainsi qu\'un calendrier complet de leur tournée.', 
+                            link: 'https://piedebiche.fr/',
                             badges: [ 
                                 'Design', 
-                                'Custom WP theme', 
+                                'Dev', 
                                 'OPS'
                             ],
                             mockup: './assets/video/pdb.webm', 
                             logos: [
-                               {title : 'react', url: './assets/img/react.png'},
+                                {title : 'wp', dark: './assets/img/wp-dark.svg', light: './assets/img/wp-light.svg'},
+                                {title : 'js', dark: './assets/img/js-dark.svg', light: './assets/img/js-light.svg'},
+                            ]
+                        },
+                        { 
+                            id: 3, 
+                            title: 'Drink Genius', 
+                            date: '2023', 
+                            description: 'Application web imaginée en équipe pour la validation du Titre Développeur Web et Web Mobile.\nGagne du temps sur la création de tes cocktails !', 
+                            link: 'https://drink-genius.fr/',
+                            badges: [ 
+                                'Design', 
+                                'Dev', 
+                                'OPS'
+                            ],
+                            mockup: './assets/video/drinkgenius.webm', 
+                            logos: [
+                                {title : 'wp', dark: './assets/img/wp-dark.svg', light: './assets/img/wp-light.svg'},
+                            ]
+                        },
+                        { 
+                            id: 4, 
+                            title: 'Young Creative Awards', 
+                            date: '2021', 
+                            description: 'Conception de l\'identité visuelle numérique de la section Young Creative Awards du festival Deauville Green Awards.', 
+                            link: 'https://drink-genius.fr/',
+                            badges: [ 
+                                'Design', 
+                                'Identité visuelle'
+                            ],
+                            mockup: './assets/video/yca.webm', 
+                            logos: [
+                                {title : 'figma', dark: './assets/img/figma-dark.svg', light: './assets/img/figma-light.svg'},
+                                {title : 'adobe', dark: './assets/img/adobe-dark.svg', light: './assets/img/adobe-light.svg'},
                             ]
                         },
                     ],
