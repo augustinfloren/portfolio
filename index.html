@@ -7,9 +7,9 @@
     <title>Augustin Floren</title>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body>
+<body class="w-[100vw] max-w-[100vw] overflow-x-hidden">
     <!-- CONTAINER -->
-    <div id="container" class="grid grid-cols-12 gap-[1.5vw] w-full h-full px-[8vw] py-[5vh] bg-background 2xl:px-[6vw]">
+    <div id="container" class="relative grid grid-cols-12 gap-[1.5vw] w-full h-full pt-[5vh] bg-background px-[8vw] 2xl:px-[6vw]">
         <!-- HEADER -->
         <header class="col-span-full flex justify-between items-center">
             <div class="text-medium flex flex-col gap-2 leading-none">
@@ -33,8 +33,7 @@
                 <div class="flex flex-col items-start mb-[40px] gap-[15px] col-span-12 lg:col-span-6 md:col-span-7">
                     <h1 class="text-xl font-bold leading-none bg-clip-text text-transparent bg-gradient-to-r from-accent-light to-accent-dark">Hello !</h1>
                     <h4 class="text-large font-light leading-[142%] max-w-[550px]">
-                        J’aime passer du temps derrière un écran ou avec un crayon, à imaginer,
-                        trouver des solutions, soigner mon travail et découvrir de nouveaux outils.
+                        J’aime imaginer, résoudre, peaufiner et explorer de nouveaux outils, que ce soit derrière un écran ou avec un crayon.
                     </h4>
                     <!-- Bouton -->
                     <div class="text-base font-light rounded-lg border border-gray-300 p-btn px-5 mt-5">
@@ -43,13 +42,13 @@
                 </div>
             </section>
             <!-- WORK SECTION -->
-            <section id="Work" class="mb-[30px] mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6"> 
+            <section id="Work" class="mb-[30px] mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6"> 
                 <h3 class="text-medium font-light mb-title">Créations récentes</h3>
                 <!-- Cards -->
                 <div class="cards-container grid grid-rows-4 gap-14" x-data="app()">
                     <template x-for="card in cards" :key="card.id">
                         <!-- Card -->
-                        <div :class="card.id % 2 === 0 ? 'text-text bg-primary' : 'text-primary bg-gradient-to-r from-accent-dark to-accent-light'" class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row p-5 sm:p-card rounded-lg relative drop-shadow-2xl" x-data="cardComponent(card)">
+                        <div :class="card.id % 2 === 0 ? 'text-text bg-primary' : 'text-primary bg-gradient-to-r from-accent-dark to-accent-light'" class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row p-5 sm:p-card rounded-lg relative drop-shadow-xl" x-data="cardComponent(card)">
                             <!-- Card > Description -->
                             <div :class="card.id % 2 === 0 ? 'sm:order-2' : 'sm:order-1'" class="order-1 h-full grow basis-1/2 flex flex-col items-start justify-start sm:justify-between gap-5">
                                 <div class="flex flex-col">
@@ -90,100 +89,155 @@
                 </div>
             </section>
             <!-- ABOUT SECTION -->
-            <section id="Work" class="mb-[30px] mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6"> 
+            <section id="About" class="mb-[30px] mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6"> 
                 <h3 class="text-medium font-light mb-title">À propos de moi</h3>
                 <!-- Card -->
-                <div class="text-text bg-primary flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-2xl">
+                <div class="text-text bg-primary flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-xl">
                     <!-- Card > Description -->
-                    <div class="h-full grow basis-1/2 flex flex-col items-start justify-between gap-5">
+                    <div class="h-full grow basis-1/3 sm:basis-1/2 flex flex-col items-start justify-between gap-5">
                         <!-- description text -->
                         <p class="text-sm">
-                            Net odipicae nimo ius, sandae. Itae il incipideri te et quae consequatem que el et ab inctore prempeliquis quatustius exceaqui omnis del ilis ducit, ut que nihil imi, sum eum harcidi cturiatusam eatenes sintion resto id quam, cuptati stionest, quaecus ea doluptat. Tem fuga. Nemqui 
+                            Passionné par la création numérique, je me spécialise dans la conception graphique et le développement web. J'allie technique et créativité pour donner vie à vos projets, qu'ils soient épurés ou ambitieux. À l'écoute de vos besoins, mon approche repose sur un travail collaboratif et une adaptabilité constante aux nouvelles tendances du web et du design.
                         </p>
                     </div>
                     <!-- Card > Image -->
-                    <div class="grow basis-1/2 flex justify-center h-full w-full items-center self-center bg-no-repeat bg-center bg-cover bg-[length:150%] rounded-md" style="background-image: url(./assets/img/landscape.jpg)"></div>
+                    <div class="grow basis-2/3 sm:basis-1/2 flex justify-center h-full w-full items-center self-center bg-no-repeat bg-center bg-cover bg-[length:150%] rounded-md" style="background-image: url(./assets/img/landscape.jpg)"></div>
                 </div>
             </section>
             <!-- SKILLS SECTION -->
-            <section id="Work" class="mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 2xl:col-start-4 2xl:col-span-6"> 
+            <section id="Skills" class="mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6"> 
                 <h3 class="text-medium font-light mb-title">Skills</h3>
-                <!-- Cards -->
-                <div>
-                
-                </div>
                 <!-- Cards container -->
-                <div class="flex gap-[1.5vw]">
+                <div class="flex flex-col sm:flex-row gap-14 sm:gap-[1.5vw]">
                     <!-- Card 1 -->   
                     <div class="grow basis-1/2">
                         <!-- card > title -->
-                        <h4 class="text-base mt-[-10px] mb-[15px]">→ Development</h4>
-                        <div class="md:col-span-5 text-text bg-primary flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-lg">
+                        <h4 class="text-base mt-[-10px] mb-[15px]"><span class="text-accent-light">→ </span>Design</h4>
+                        <div class="md:col-span-5 text-text bg-primary flex flex-row lg:flex-col gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-xl">
                             <!-- Card > List -->
-                            <div class="flex gap-5 w-full">
+                            <div class="flex flex-col lg:flex-row gap-5 w-full">
                                 <div class="flex flex-col gap-3 grow basis-1/2">
-                                    <h4 class="text-[1rem]">Knowledges</h4>
-                                    <ul class="text-sm leading-7">
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
+                                    <h4 class="text-sm border-b-2 pb-2">Connaissances</h4>
+                                    <ul class="flex flex-wrap gap-x-3 lg:block text-xs leading-7">
+                                        <li>▪ UX</li>
+                                        <li>▪ Maquettage</li>
+                                        <li>▪ Wireframing</li>
+                                        <li>▪ Responsive</li>
+                                        <li>▪ Animation</li>
+                                        <li>▪ Branding</li>
                                     </ul>
                                 </div>
                                 <div class="flex flex-col gap-3 grow basis-1/2">
-                                    <h4 class="text-[1rem]">Tools</h4>
-                                    <ul class="text-sm leading-7">
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
+                                    <h4 class="text-sm border-b-2 pb-2">Outils</h4>
+                                    <ul class="flex flex-wrap gap-x-3 lg:block text-xs leading-7">
+                                        <li>▪ Figma</li>
+                                        <li>▪ Adobe</li>
+                                        <li>▪ Premiere Pro</li>
+                                        <li>▪ After Effects</li>
+                                        <li>▪ Framer motion</li>
+                                        <li>▪ Sketching</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Card 2 -->   
+                    <!-- Card 1 -->   
                     <div class="grow basis-1/2">
                         <!-- card > title -->
-                        <h4 class="text-base mt-[-10px] mb-[15px]">→ Development</h4>
-                        <div class="md:col-span-5 text-text bg-primary flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-lg">
+                        <h4 class="text-base mt-[-10px] mb-[15px]"><span class="text-accent-light">→ </span>Développement</h4>
+                        <div class="md:col-span-5 text-text bg-primary flex flex-row lg:flex-col gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-xl">
                             <!-- Card > List -->
-                            <div class="flex gap-5 w-full">
+                            <div class="flex flex-col lg:flex-row gap-5 w-full">
                                 <div class="flex flex-col gap-3 grow basis-1/2">
-                                    <h4 class="text-[1rem]">Knowledges</h4>
-                                    <ul class="text-sm leading-7">
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
+                                    <h4 class="text-sm border-b-2 pb-2">Connaissances</h4>
+                                    <ul class="flex flex-wrap gap-x-3 lg:block text-xs leading-7">
+                                        <li>▪ Back & Front</li>
+                                        <li>▪ Testing</li>
+                                        <li>▪ API RESTful</li>
+                                        <li>▪ Sécurité</li>
+                                        <li>▪ SEO</li>
+                                        <li>▪ Dev OPS</li>
                                     </ul>
                                 </div>
                                 <div class="flex flex-col gap-3 grow basis-1/2">
-                                    <h4 class="text-[1rem]">Tools</h4>
-                                    <ul class="text-sm leading-7">
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
-                                        <li>▪ Knowledges</li>
+                                    <h4 class="text-sm border-b-2 pb-2">Outils</h4>
+                                    <ul class="flex flex-wrap gap-x-3 lg:block text-xs leading-7">
+                                        <li>▪ HTML / CSS</li>
+                                        <li>▪ Sass</li>
+                                        <li>▪ Node.js</li>
+                                        <li>▪ React</li>
+                                        <li>▪ Php</li>
+                                        <li>▪ Wordpress</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                    </div>
+            </section>
+            <!-- STACK SECTION -->
+            <section id="Stack" class="flex flex-col items-center justify-center mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6">
+                <div class="sm:w-[70%] flex flex-wrap gap-5 sm:gap-12 items-center justify-center" x-data="app()">
+                    <template x-for="stack in stacks" :key="stack.id">
+                        <div class="flex flex-wrap items-center justify-center" x-data="cardComponent(stack)">
+                            <img :src='stack.url' alt="'Logo de : ' + stack.title" class="opacity-50" :class='stack.title === "mysql" ? "w-16 sm:w-20 2xl:w-24" : "min-w-10 sm:w-14 2xl:w-16"'>
+                        </div>
+                    </template>
+                </div>
+            </section>
+            <!-- CONTACT SECTION -->
+            <section id="Stack" class="flex flex-col items-center justify-center mt-mobile-section md:mt-large col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6">
+                <div class="w-full flex flex-col gap-[40px] sm:gap-12 items-center justify-center">
+                    <!-- Title -->
+                    <h4 class="text-large font-medium leading-[142%] max-w-[550px] bg-clip-text text-transparent bg-gradient-to-r from-accent-light to-accent-dark">
+                        Un projet ? Je suis là.
+                    </h4>
+                    <!-- Btns -->
+                    <div class="flex flex-col gap-2 sm:flex-row sm:gap-[1.5vw]">
+                        <!-- Btn 1 -->
+                        <a href="mailto:augustinfloren@gmail.com">
+                            <div class="flex items-center justify-center text-base text-primary rounded-lg bg-gradient-to-r from-accent-light to-accent-dark p-btn px-5 mt-5">
+                                augustinfloren@gmail.com
+                            </div>
+                        </a>
+                        <!-- Btn 2 -->
+                         <a href="tel:+330685587288">
+                             <div class="flex items-center justify-center text-base font-light rounded-lg border border-accent-light p-btn px-5 sm:mt-5">
+                                 +33 06 85 58 72 88
+                             </div>
+                         </a>
                     </div>
                 </div>
             </section>
         </main>
-
-        <footer>
-            footer
+        <footer class="relative h-72 mt-mobile-section md:mt-section">
+            <div class="absolute h-72 bg-secondary w-[100vw] grid grid-cols-12 gap-[1.5vw] mt-14 ml-[-8vw] 2xl:ml-[-6vw] px-[8vw] 2xl:px-[6vw] pt-10">
+                <div class="col-start-1 col-span-full sm:col-span-4 xl:col-span-3">
+                    <h5 class="text-sm uppercase mb-1">version</h5>
+                    <p class="text-sm">2024 © augustin floren</p>
+                </div>
+                <div class="col-start-1 sm:col-start-5 col-span-3 xl:col-start-4 flex flex-col gap-5" x-data="app()">
+                    <div>
+                        <h5 class="text-sm uppercase mb-1">SOCIALS</h5>
+                        <div class="flex gap-1">
+                            <template x-for="logo in logos" :key="logo.id">
+                                    <template x-if="logo.type === 'socials'">
+                                        <a :href="logo.link" target="_blank">
+                                            <img :src="logo.url" :alt="logo.title" class="w-6">
+                                        </a>
+                                    </template>
+                            </template>
+                        </div>
+                    </div>
+                
+                    <div>
+                        <h5 class="text-sm uppercase mb-1">RESUME</h5>
+                        <a href="./assets/cv.pdf" target="_blank" download="cv.pdf">
+                            <img src="./assets/img/resume.svg" alt="Logo cv" class="w-5">
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
         </footer>
         <script>
             function app() {
@@ -256,6 +310,77 @@
                             ]
                         },
                     ],
+                    stacks : [
+                        {
+                            id:1,
+                            title: "js",
+                            url: "./assets/img/js-dark.svg",
+                        },
+                        {
+                            id:2,
+                            title: "react",
+                            url: "./assets/img/react-dark.svg",
+                        },
+                        {
+                            id:3,
+                            title: "node",
+                            url: "./assets/img/node-dark.svg",
+                        },
+                        {
+                            id:4,
+                            title: "sass",
+                            url: "./assets/img/sass-dark.svg",
+                        },
+                        {
+                            id:5,
+                            title: "wp",
+                            url: "./assets/img/wp-dark.svg",
+                        },
+                        {
+                            id:6,
+                            title: "php",
+                            url: "./assets/img/php-dark.svg",
+                        },
+                        {
+                            id:7,
+                            title: "postgre",
+                            url: "./assets/img/postgre-dark.svg",
+                        },
+                        {
+                            id:8,
+                            title: "mysql",
+                            url: "./assets/img/mysql-dark.svg",
+                        }
+                    ],
+                    logos : [
+                        {
+                            id:1,
+                            title: "github",
+                            type: "socials",
+                            url: "./assets/img/github.svg",
+                            link: "https://github.com/augustinfloren",
+                        },
+                        {
+                            id:2,
+                            title: "linkedin",
+                            type: "socials",
+                            url: "./assets/img/linkedin.svg",
+                            link: "https://www.linkedin.com/in/augustin-floren-3b2085204/",
+                        },
+                        {
+                            id:3,
+                            title: "whatsapp",
+                            type: "socials",
+                            url: "./assets/img/whatsapp.svg",
+                            link: "https://wa.me/33685587288",
+                        },
+                        {
+                            id:4,
+                            title: "resume",
+                            type: "file",
+                            link: "./assets/cv.pdf",
+                        },
+                    ]
                 };
             }
         
@@ -270,6 +395,19 @@
                     logos: card.logos,
                 };
             }
+            function stackComponent(stack) {
+                return {
+                    title: stack.title,
+                    url: stack.url,
+                };
+            };
+            function footerComponent(logo) {
+                return {
+                    title: logo.title,
+                    type: logo.type,
+                    url: logo.url,
+                };
+            };
         </script>
         <script src="./script.js"></script>
     </div>
