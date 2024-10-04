@@ -11,8 +11,28 @@
         @apply text-text font-display;
     }
 
-    /* .badge {
-        @apply bg-primary text-accent-dark uppercase;
-    } */
+    .animated-title {
+        position: relative;
+        animation: moveDownUp 4s linear infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes moveDownUp {
+        0% {
+            bottom: 0; /* Position initiale */
+        }
+        45% {
+            bottom: 0; /* Position initiale */
+        }
+        50% {
+            bottom: 29px; /* Position initiale */
+        }
+        95% {
+            bottom: 29px; /* Position finale (vers le bas) */
+        }
+        100% {
+            bottom: 0px; /* Position finale (vers le bas) */
+        }
+    }
 };
   

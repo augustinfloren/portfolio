@@ -41,9 +41,9 @@ module.exports = {
         shrink: 'clamp(-0.5rem, -0.2rem, 0)',
       },
       fontFamily: {
-        display: 'bricolage grotesque, sans-serif',
-        body: 'inter, sans-serif',
-      },
+        display: ['"Bricolage Grotesque"', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },      
       lineHeight: {
         'title': '48px',
       }
