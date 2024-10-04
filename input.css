@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply text-text font-body;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-text font-display;
+    }
+
+    .animated-title {
+        position: relative;
+        animation: moveDownUp 4s linear infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes moveDownUp {
+        0% {
+            bottom: 0; /* Position initiale */
+        }
+        45% {
+            bottom: 0; /* Position initiale */
+        }
+        50% {
+            bottom: 29px; /* Position initiale */
+        }
+        95% {
+            bottom: 29px; /* Position finale (vers le bas) */
+        }
+        100% {
+            bottom: 0px; /* Position finale (vers le bas) */
+        }
+    }
+};
+  

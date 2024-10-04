@@ -1,12 +1,426 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
     <title>Augustin Floren</title>
+    <meta name="description" content="Design & Développement web" />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/logo.ico" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <h1 class="text-base font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent-light to-accent-dark">Hellod</h1>
+<body class="w-[100vw] max-w-[100vw] overflow-x-hidden">
+    <!-- CONTAINER -->
+    <div id="container" class="relative grid grid-cols-12 gap-[1.5vw] w-full h-full pt-[5vh] bg-background px-[8vw] 2xl:px-[6vw]">
+        <!-- HEADER -->
+        <header class="col-span-full flex justify-between items-center">
+            <div class="text-medium flex flex-col gap-2 leading-none">
+                <h4 class="font-bold">Augustin.</h4>
+                <div class="h-7 overflow-hidden">
+                    <div class="animated-title flex flex-col gap-1">
+                        <h4 class="animate">Designer</h4>
+                        <h4>Développeur</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Menu -->
+            <nav class="hidden md:flex text-base bg-secondary h-auto py-2 px-6 gap-2 rounded-full">
+                <a href="#work" class="rounded-full px-2.5 text-text transition duration-300 ease-in-out bg-secondary hover:bg-text hover:text-secondary hover:animate-pulse">Projets</a>
+                <a href="#about" class="rounded-full px-2.5 text-text transition duration-300 ease-in-out bg-secondary hover:bg-text hover:text-secondary hover:animate-pulse">À propos</a>
+                <a href="#contact" class="rounded-full px-2.5 text-text transition duration-300 ease-in-out bg-secondary hover:bg-text hover:text-secondary hover:animate-pulse">Contact</a>
+            </nav>
+        </header>
+    
+        <main class="grid grid-cols-12 gap-[1.5vw] col-span-full lg:my-[1rem] md:my-[3rem]">
+            <!-- HERO SECTION -->
+            <section id="hero" class="col-span-full grid grid-cols-12 gap-[1.5vw] items-center">
+                <div class="flex justify-center col-span-12 lg:col-span-6 md:col-span-5 md:justify-end"> 
+                    <img src="./assets/img/portrait.png" alt="Portrait de Augustin Floren." class="w-[60%] h-[auto] max-w-[400px] min-w-[300px]">
+                </div>
+                <div class="flex flex-col justify-start items-start mb-[40px] gap-[15px] col-span-12 lg:col-span-6 md:col-span-7">
+                    <h1 class="text-xl font-bold leading-none bg-clip-text text-transparent bg-gradient-to-r from-accent-light to-accent-dark">Hello !</h1>
+                    <h4 class="text-large font-light leading-[142%] max-w-[550px]">
+                        Que ce soit derrière un écran ou avec un crayon, j’aime imaginer, résoudre, peaufiner et explorer de nouveaux outils.
+                    </h4>
+                    <!-- Bouton -->
+                    <a href="#work" class="text-base text-text font-light transition-opacity duration-300 ease-in-out rounded-lg outline outline-1 outline-accent-light p-btn px-5 mt-6 ml-1 hover:bg-gradient-to-r hover:from-accent-dark hover:to-accent-light hover:text-primary hover:outline-0 hover:drop-shadow-lg hover:opacity-50">
+                        Voir mon travail
+                    </a>
+                </div>
+            </section>
+            <!-- WORK SECTION -->
+            <section id="work" class="mb-[30px] mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6"> 
+                <h3 class="text-medium font-light mb-title">Créations récentes</h3>
+                <!-- Cards -->
+                <div class="cards-container grid grid-rows-4 gap-14" x-data="app()">
+                    <template x-for="card in cards" :key="card.id">
+                        <!-- Card -->
+                        <div :class="card.id % 2 === 0 ? 'text-text bg-primary' : 'text-primary bg-gradient-to-r from-accent-dark to-accent-light'" class="flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row p-5 sm:p-card rounded-lg relative drop-shadow-xl" x-data="cardComponent(card)">
+                            <!-- Card > Description -->
+                            <div :class="card.id % 2 === 0 ? 'sm:order-2' : 'sm:order-1'" class="order-1 h-full grow basis-1/2 flex flex-col items-start justify-start sm:justify-between gap-5">
+                                <div class="flex flex-col">
+                                    <!-- date -->
+                                    <span class="text-xs opacity-50 leading-none" x-text="date"></span>
+                                    <div class="flex gap-4 items-center">
+                                        <!-- title -->
+                                        <h4 :class="card.id % 2 === 0 ? 'text-text' : 'text-primary'" class="text-base" x-text="title"></h4>
+                                        <!-- link -->
+                                        <a x-bind:href="link" target="_blank">
+                                            <div class="border w-[2rem] h-[2rem] flex justify-center items-center rounded-full border-accent-light text-accent-light leading-none pb-[2px] pr-[2px] cursor-pointer">↗</div>
+                                        </a>
+                                    </div>
+                                    <!-- desctription text -->
+                                    <p class="text-sm mt-2 sm:mt-5" x-text="description">
+                                    </p>
+                                </div>
+                                <div class="flex gap-2 items-center mt-5 sm:mt-0">
+                                    <!-- Badges -->
+                                    <template x-for="badge in badges">
+                                        <span class="rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-text ring-1 ring-inset ring-gray-500/10" x-text="badge"></span>
+                                    </template>
+                                    <span>|</span>
+                                    <!-- logos -->
+                                    <template x-for="logo in logos">
+                                        <div :class="logo.large ? 'w-14' : (logo.medium ? 'w-[32px]' : 'w-7')">
+                                            <img :src="card.id % 2 === 0 ? logo.dark : logo.light" class=""/>
+                                        </div>
+                                    </template>
+                                </div>
+                                </div>
+                                <!-- Card > Mockup -->
+                                <div :class="card.id % 2 === 0 ? 'sm:order-1' : 'sm:order-2'" class="order-2 grow basis-1/2 flex justify-center items-center w-[35%] self-center">
+                                    <video :id="'mockup-' + card.id" :src="mockup" muted autoplay loop playsinline :class="(card.id % 2 === 0 ? 'sm:ml-[-20%]' : 'sm:ml-[20%]') + ' ' + (card.id === 4 ? 'w-[45%] mr-[40px] sm:mr-0' : 'w-[55%]')" class="mt-12 sm:mt-0 absolute max-w-[650px] min-w-[350px]"></video>
+                                </div>
+                            </div>
+                    </template>
+                </div>
+            </section>
+            <!-- ABOUT SECTION -->
+            <section id="about" class="mb-[30px] mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6"> 
+                <h3 class="text-medium font-light mb-title">À propos de moi 💻🎸🚵🏼‍</h3>
+                <!-- Card -->
+                <div class="text-text bg-primary flex flex-col h-[30rem] sm:h-[20rem] sm:flex-row gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-xl">
+                    <!-- Card > Description -->
+                    <div class="h-full grow basis-1/3 sm:basis-1/2 flex flex-col items-start justify-between gap-5">
+                        <!-- description text -->
+                        <p class="text-sm">
+                            <strong>Passionné</strong> par la création numérique depuis le plus jeune âge et diplômé du titre de Développeur Wet et Web Mobile, je me suis spécialisé dans la conception graphique et le développement web. J'aime l'aspect technique de la programmation que j'allie avec mon regard créatif acquis lors de mes études en arts. 
+                            Je passer mon temps libre à découvrir la nature en randonnée et à vélo ou à jouer de la guitare, du piano et à composer de la musique électronique.
+                        </p>
+                    </div>
+                    <!-- Card > Image -->
+                    <div class="grow basis-2/3 sm:basis-1/2 flex justify-center h-full w-full items-center self-center bg-no-repeat bg-center bg-cover bg-[length:150%] rounded-md" style="background-image: url(./assets/img/landscape.jpg)"></div>
+                </div>
+            </section>
+            <!-- SKILLS SECTION -->
+            <section id="Skills" class="mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6"> 
+                <h3 class="text-medium font-light mb-title">Skills</h3>
+                <!-- Cards container -->
+                <div class="flex flex-col sm:flex-row gap-14 sm:gap-[1.5vw]">
+                    <!-- Card 1 -->   
+                    <div class="grow basis-1/2">
+                        <!-- card > title -->
+                        <h4 class="text-base mt-[-10px] mb-[15px]"><span class="text-accent-light">→ </span>Design</h4>
+                        <div class="md:col-span-5 text-text bg-primary flex flex-row lg:flex-col gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-xl">
+                            <!-- Card > List -->
+                            <div class="flex flex-col lg:flex-row gap-5 w-full">
+                                <div class="flex flex-col gap-3 grow basis-1/2">
+                                    <h4 class="text-sm border-b-2 pb-2">Connaissances</h4>
+                                    <ul class="flex flex-wrap gap-x-3 lg:block text-xs leading-7">
+                                        <li>▪ UX</li>
+                                        <li>▪ Maquettage</li>
+                                        <li>▪ Wireframing</li>
+                                        <li>▪ Responsive</li>
+                                        <li>▪ Animation</li>
+                                        <li>▪ Branding</li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col gap-3 grow basis-1/2">
+                                    <h4 class="text-sm border-b-2 pb-2">Outils</h4>
+                                    <ul class="flex flex-wrap gap-x-3 lg:block text-xs leading-7">
+                                        <li>▪ Figma</li>
+                                        <li>▪ Adobe</li>
+                                        <li>▪ Premiere Pro</li>
+                                        <li>▪ After Effects</li>
+                                        <li>▪ Framer motion</li>
+                                        <li>▪ Sketching</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 1 -->   
+                    <div class="grow basis-1/2">
+                        <!-- card > title -->
+                        <h4 class="text-base mt-[-10px] mb-[15px]"><span class="text-accent-light">→ </span>Développement</h4>
+                        <div class="md:col-span-5 text-text bg-primary flex flex-row lg:flex-col gap-5 p-5 sm:p-card rounded-lg relative drop-shadow-xl">
+                            <!-- Card > List -->
+                            <div class="flex flex-col lg:flex-row gap-5 w-full">
+                                <div class="flex flex-col gap-3 grow basis-1/2">
+                                    <h4 class="text-sm border-b-2 pb-2">Connaissances</h4>
+                                    <ul class="flex flex-wrap gap-x-3 lg:block text-xs leading-7">
+                                        <li>▪ Back & Front</li>
+                                        <li>▪ Testing</li>
+                                        <li>▪ API RESTful</li>
+                                        <li>▪ Sécurité</li>
+                                        <li>▪ SEO</li>
+                                        <li>▪ Dev OPS</li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col gap-3 grow basis-1/2">
+                                    <h4 class="text-sm border-b-2 pb-2">Outils</h4>
+                                    <ul class="flex flex-wrap gap-x-3 lg:block text-xs leading-7">
+                                        <li>▪ HTML / CSS</li>
+                                        <li>▪ Sass</li>
+                                        <li>▪ Node.js</li>
+                                        <li>▪ React</li>
+                                        <li>▪ Php</li>
+                                        <li>▪ Wordpress</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <!-- STACK SECTION -->
+            <section id="Stack" class="flex flex-col items-center justify-center mt-mobile-section md:mt-section col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6">
+                <div class="sm:w-[70%] flex flex-wrap gap-5 sm:gap-12 items-center justify-center" x-data="app()">
+                    <template x-for="stack in stacks" :key="stack.id">
+                        <div class="flex flex-wrap items-center justify-center" x-data="cardComponent(stack)">
+                            <img :src='stack.url' alt="'Logo de : ' + stack.title" class="opacity-50" :class='stack.title === "mysql" ? "w-16 sm:w-20 2xl:w-24" : "min-w-10 sm:w-14 2xl:w-16"'>
+                        </div>
+                    </template>
+                </div>
+            </section>
+            <!-- CONTACT SECTION -->
+            <section id="contact" class="flex flex-col items-center justify-center mt-mobile-section md:mt-large col-start-1 col-span-12 md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8 min-[1700px]:col-start-4 min-[1700px]:col-span-6">
+                <div class="w-full flex flex-col gap-[40px] sm:gap-12 items-center justify-center">
+                    <!-- Title -->
+                    <h4 class="text-large font-medium leading-[142%] max-w-[550px] bg-clip-text text-transparent bg-gradient-to-r from-accent-light to-accent-dark">
+                        Un projet ? Je suis là.
+                    </h4>
+                    <!-- Btns -->
+                    <div class="flex flex-col gap-2 sm:flex-row sm:gap-[1.5vw]">
+                        <!-- Btn 1 -->
+                        <a href="mailto:augustinfloren@gmail.com">
+                            <div class="flex items-center justify-center text-base text-primary transition-opacity duration-300 ease-in-out hover:opacity-50 rounded-lg bg-gradient-to-r from-accent-light to-accent-dark p-btn px-5 mt-5">
+                                augustinfloren@gmail.com
+                            </div>
+                        </a>
+                        <!-- Btn 2 -->
+                         <a href="tel:+330685587288">
+                             <div class="flex items-center justify-center text-base font-light transition-opacity duration-300 ease-in-out hover:opacity-50 rounded-lg outline outline-1 outline-accent-light p-btn px-5 sm:mt-5 hover:bg-gradient-to-r hover:from-accent-dark hover:to-accent-light hover:text-primary hover:outline-0 hover:drop-shadow-lg">
+                                 +33 06 85 58 72 88
+                             </div>
+                         </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="relative h-72 mt-mobile-section md:mt-section">
+            <div class="absolute h-72 bg-secondary w-[100vw] grid grid-cols-12 gap-[1.5vw] mt-14 ml-[-8vw] 2xl:ml-[-6vw] px-[8vw] 2xl:px-[6vw] pt-10">
+                <div class="col-start-1 col-span-full sm:col-span-4 xl:col-span-3">
+                    <h5 class="text-sm uppercase mb-1">version</h5>
+                    <p class="text-sm">2024 © augustin floren</p>
+                </div>
+                <div class="col-start-1 sm:col-start-5 col-span-3 xl:col-start-4 flex flex-col gap-5" x-data="app()">
+                    <div>
+                        <h5 class="text-sm uppercase mb-1">Réseaux</h5>
+                        <div class="flex gap-1">
+                            <template x-for="logo in logos" :key="logo.id">
+                                    <template x-if="logo.type === 'socials'">
+                                        <a :href="logo.link" target="_blank">
+                                            <img :src="logo.url" :alt="logo.title" class="w-6">
+                                        </a>
+                                    </template>
+                            </template>
+                        </div>
+                    </div>
+                
+                    <div>
+                        <h5 class="text-sm uppercase mb-1">CV</h5>
+                        <a href="./assets/cv.pdf" target="_blank" download="cv.pdf">
+                            <img src="./assets/img/resume.svg" alt="Logo cv" class="w-5">
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </footer>
+        <script>
+            function app() {
+                return {
+                    cards: [
+                        { 
+                            id: 1, 
+                            title: 'Les artistes femmes', 
+                            date: '2024', 
+                            description: 'Réalisation du site internet d\'achat du jeux de société imaginé par l\'artiste plasticienne Sybille Duboc + création graphique du design de la boîte de jeux.', 
+                            link: 'http://194.164.60.106/',
+                            badges: [ 
+                                'Design', 
+                                'Dev', 
+                                'OPS'
+                            ],
+                            mockup: './assets/video/osplaf.webm', 
+                            logos: [
+                               {title : 'react', dark: './assets/img/react-dark.svg', light: './assets/img/react-light.svg'},
+                               {title : 'sass', dark: './assets/img/sass-dark.svg', light: './assets/img/sass-light.svg'},
+                            ]
+                        },
+                        { 
+                            id: 2, 
+                            title: 'Piedebiche', 
+                            date: '2024', 
+                            description: 'Site internet du groupe de Punk-rock marseillais avec créations d\'un plugin de lecteur audio ainsi qu\'un calendrier complet de leur tournée.', 
+                            link: 'https://piedebiche.fr/',
+                            badges: [ 
+                                'Design', 
+                                'Dev', 
+                                'OPS'
+                            ],
+                            mockup: './assets/video/pdb.webm', 
+                            logos: [
+                                {title : 'wp', dark: './assets/img/wp-dark.svg', light: './assets/img/wp-light.svg'},
+                                {title : 'js', dark: './assets/img/js-dark.svg', light: './assets/img/js-light.svg'},
+                            ]
+                        },
+                        { 
+                            id: 3, 
+                            title: 'Drink Genius', 
+                            date: '2023', 
+                            description: 'Application web imaginée en équipe pour la validation du Titre Développeur Web et Web Mobile.\nGagne du temps sur la création de tes cocktails !', 
+                            link: 'https://drink-genius.fr/',
+                            badges: [ 
+                                'Design', 
+                                'Dev', 
+                                'OPS'
+                            ],
+                            mockup: './assets/video/drinkgenius.webm', 
+                            logos: [
+                                {title : 'node', dark: './assets/img/node-dark.svg', light: './assets/img/node-light.svg', large: true},
+                            ]
+                        },
+                        { 
+                            id: 4, 
+                            title: 'Young Creative Awards', 
+                            date: '2021', 
+                            description: 'Conception de l\'identité visuelle numérique de la section Young Creative Awards du festival Deauville Green Awards.', 
+                            link: 'https://deauvillegreenawards.com/fr/competition/young-creative-awards',
+                            badges: [ 
+                                'Design', 
+                                'Identité visuelle'
+                            ],
+                            mockup: './assets/video/yca.webm', 
+                            logos: [
+                                {title : 'figma', dark: './assets/img/figma-dark.svg', light: './assets/img/figma-light.svg'},
+                                {title : 'adobe', dark: './assets/img/adobe-dark.svg', light: './assets/img/adobe-light.svg', medium: true},
+                            ]
+                        },
+                    ],
+                    stacks : [
+                        {
+                            id:1,
+                            title: "js",
+                            url: "./assets/img/js-dark.svg",
+                        },
+                        {
+                            id:2,
+                            title: "react",
+                            url: "./assets/img/react-dark.svg",
+                        },
+                        {
+                            id:3,
+                            title: "node",
+                            url: "./assets/img/node-dark.svg",
+                        },
+                        {
+                            id:4,
+                            title: "sass",
+                            url: "./assets/img/sass-dark.svg",
+                        },
+                        {
+                            id:5,
+                            title: "wp",
+                            url: "./assets/img/wp-dark.svg",
+                        },
+                        {
+                            id:6,
+                            title: "php",
+                            url: "./assets/img/php-dark.svg",
+                        },
+                        {
+                            id:7,
+                            title: "postgre",
+                            url: "./assets/img/postgre-dark.svg",
+                        },
+                        {
+                            id:8,
+                            title: "mysql",
+                            url: "./assets/img/mysql-dark.svg",
+                        }
+                    ],
+                    logos : [
+                        {
+                            id:1,
+                            title: "github",
+                            type: "socials",
+                            url: "./assets/img/github.svg",
+                            link: "https://github.com/augustinfloren",
+                        },
+                        {
+                            id:2,
+                            title: "linkedin",
+                            type: "socials",
+                            url: "./assets/img/linkedin.svg",
+                            link: "https://www.linkedin.com/in/augustin-floren-3b2085204/",
+                        },
+                        {
+                            id:3,
+                            title: "whatsapp",
+                            type: "socials",
+                            url: "./assets/img/whatsapp.svg",
+                            link: "https://wa.me/33685587288",
+                        },
+                        {
+                            id:4,
+                            title: "resume",
+                            type: "file",
+                            link: "./assets/cv.pdf",
+                        },
+                    ]
+                };
+            }
+        
+            function cardComponent(card) {
+                return {
+                    title: card.title,
+                    description: card.description,
+                    date: card.date,
+                    link: card.link,
+                    badges: card.badges,
+                    mockup: card.mockup,
+                    logos: card.logos,
+                };
+            }
+            function stackComponent(stack) {
+                return {
+                    title: stack.title,
+                    url: stack.url,
+                };
+            };
+            function footerComponent(logo) {
+                return {
+                    title: logo.title,
+                    type: logo.type,
+                    url: logo.url,
+                };
+            };
+        </script>
+        <script src="./script.js"></script>
+    </div>
 </body>
 </html>

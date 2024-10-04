@@ -1,0 +1,10 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    justify-content: center;
+}
+
+.itemPasCentre {
+    justify-self: start;
+}
