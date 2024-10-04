@@ -6,6 +6,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width: {
+        'fit': 'fit-content',
+        'res': 'clamp(15rem, 10vw, 21rem)',
+      },
+      height: {
+        'fit': 'fit-content',
+        'res': 'clamp(15rem, 50vw, 21rem)',
+      },
       colors: {
         primary : '#fefffd',
         background : '#f5f5f5',
