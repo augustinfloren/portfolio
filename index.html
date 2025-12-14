@@ -69,9 +69,11 @@
                                         <!-- title -->
                                         <h4 :class="card.id % 2 === 0 ? 'text-text' : 'text-primary'" class="text-base" x-text="title"></h4>
                                         <!-- link -->
-                                        <a x-bind:href="link" target="_blank">
-                                            <div class="border w-[2rem] h-[2rem] flex justify-center items-center rounded-full border-accent-light text-accent-light leading-none pb-[2px] pr-[2px] cursor-pointer">↗</div>
-                                        </a>
+                                        <template x-if="card.title !== 'Drink Genius'">
+                                            <a x-bind:href="link" target="_blank">
+                                                <div class="border w-[2rem] h-[2rem] flex justify-center items-center rounded-full border-accent-light text-accent-light leading-none pb-[2px] pr-[2px] cursor-pointer">↗</div>
+                                            </a>
+                                        </template>
                                     </div>
                                     <!-- desctription text -->
                                     <p class="text-sm mt-2 sm:mt-5" x-text="description">
@@ -263,7 +265,7 @@
                             title: 'Les artistes femmes', 
                             date: '2024', 
                             description: 'Réalisation du site internet d\'achat du jeux de société imaginé par l\'artiste plasticienne Sybille Duboc + création graphique du design de la boîte de jeux.', 
-                            link: 'http://194.164.60.106/',
+                            link: 'https://lesartistesfemmes.fr/',
                             badges: [ 
                                 'Design', 
                                 'Dev', 
@@ -314,7 +316,7 @@
                             title: 'Young Creative Awards', 
                             date: '2021', 
                             description: 'Conception de l\'identité visuelle numérique de la section Young Creative Awards du festival Deauville Green Awards.', 
-                            link: 'https://deauvillegreenawards.com/fr/competition/young-creative-awards',
+                            link: 'https://deauvillegreenawards.com/fr/',
                             badges: [ 
                                 'Design', 
                                 'Identité visuelle'
